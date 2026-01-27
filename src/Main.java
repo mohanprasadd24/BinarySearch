@@ -3,7 +3,7 @@
 public class Main {
     public static void main(String[] args) {
         int[] arr={4,5,7,9,12,16,20,24};
-        int target=20;
+        int target=24;
         int ans = binarysearch(arr,target);
         System.out.print(ans);
 
@@ -11,8 +11,8 @@ public class Main {
     static int binarysearch(int[]arr ,int target){
         int start=0;
         int end=arr.length-1;
-        while(start<end){
-            int mid=start+(end-start)-1;
+        while(start<=end){
+            int mid=start+(end-start)/2;
             if(arr[mid]<target){
                 start=mid+1;
             }
