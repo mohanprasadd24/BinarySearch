@@ -11,7 +11,8 @@ public class firstlastpos {
         int[] ans={-1,-1};
         int first=binarysearch(arr,target,true);
         int end=binarysearch(arr,target,false);
-        ans= new int[]{first, end};
+        ans[0]=first;
+        ans[1]=end;
         return ans;
     }
 
@@ -23,16 +24,16 @@ public class firstlastpos {
         while(start<=end){
 
             int mid=start+(end-start)/2;
-            if(mid<target){
+            if(arr[mid]<target){
                 start=mid+1;
             }
-            else if(mid>target) {
+            else if(arr[mid]>target) {
                 end=mid-1;
             }
             else {
                 ans=mid;
 
-                if(fistpos){
+                if(firstpos){
                     end=mid-1;
                 }
                 else{
