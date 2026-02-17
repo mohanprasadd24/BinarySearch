@@ -1,7 +1,7 @@
 public class ceilingbs {
     public static void main(String[] args) {
-      int[]arr={1,2,3,4,5,6,8,10,12};
-      int target=9;
+      int[]arr={1,2,3,4,5,6,8,9,12};
+      int target=8;
       int ans =ceiling(arr,target);
       System.out.print(ans);
 
@@ -11,15 +11,13 @@ public class ceilingbs {
         int end=arr.length-1;
         while(start<=end){
             int mid=start+(end-start)/2;
-            if(arr[mid]<target){
+            if(arr[mid]<=target){
                 start=mid+1;
             }
             else if(arr[mid]>target){
                 end=mid-1;
             }
-            else {
-                return mid;
-            }
+
         }
         return start;
     }
