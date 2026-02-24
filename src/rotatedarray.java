@@ -15,7 +15,7 @@ public class rotatedarray {
             return ans;
         }
         else{
-            ans =binarysearch(arr,target,pivot,arr.length-1);
+            ans =binarysearch(arr,target,pivot+1,arr.length-1);
         }
         return ans;
     }
@@ -25,16 +25,16 @@ public class rotatedarray {
 
         while(start<end){
             int mid=start+(end-start)/2;
-            if (mid<start&&arr[mid]<arr[mid-1]){
+            if (mid>start&&arr[mid]<arr[mid-1]){
                 return mid-1;
             }
             else if(mid<end&&arr[mid]>arr[mid+1] ){
                 return mid;
             }
-            else if(arr[start]>=arr[mid]){
+            else if(arr[start]>arr[mid]){
                 end=mid-1;
             }
-            else{
+            else if(arr[end]<arr[mid]){
                 start=mid+1;
             }
         }
@@ -57,3 +57,39 @@ public class rotatedarray {
         return -1;
     }
 }
+
+//case1 -if mid<start&&arr[mid]<arr[mid-1] return mid-
+//
+//case2- if mid<end&&arr[mid]>arr[mid+1] return mid
+//
+//case3- if mid<end&&arr[mid]>arr[mid+1] becase if mid is samller than start then the pivot must lie from start to mid-1
+//so end=mid-1
+//
+//case4 - if arr[mid]>arr[start] then the pivot must lie between mid=1 and end
+//so start=mid+1
+//
+//return -1 if all four fails (usally not possible)
+
+
+
+
+//with duplicates
+// if(arr[mid]==arr[start]&&arr[mid]==arr[end]){
+//        if(arr[start]>arr[start+1]){
+//        return start;
+//                }
+//start++;
+//
+//        if(arr[end]<arr[end-1]){
+//        return end-1;
+//        }
+//end--;
+//        }
+//        else if(arr[start]<arr[mid]||arr[start]==arr[mid]&& arr[mid]> arr[end]){
+//start=mid+1;
+//
+//        }
+//        else{
+//end=mid-1;
+//        }
+//        }
